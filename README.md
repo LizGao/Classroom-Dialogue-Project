@@ -96,17 +96,20 @@
 
 ## Team Members:
 
-* **Qingyi Zheng**:
+* **Qingyi Zheng**: PI?能叫PI么
 
-    【Nunu进来了自己写一下】PhD student of Cambridge University.
+    【Nunu进来了自己写一下】Cambridge University - PhD Education
   
 * **Yihan Huang**:
 
     逸涵自己写一下
 
-* **Yunyi Gao**:
-
-    我晚一点自己写一下
+* **Yunyi Gao**: Development Director
+  
+   Purdue University - BS Computer Science
+   
+     - _Algorithmic Foundations_ <br>
+     - _Machine Intelligence_ <br>
 
 * **Xinyi Zheng**:
 
