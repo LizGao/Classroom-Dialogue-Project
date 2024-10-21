@@ -1,6 +1,6 @@
 # flutter_project
 
-Front-end-part
+Front-end part of our project. We chose to use Flutter due to its advantages in cross-platform development.
 
 ## Getting Started
 
