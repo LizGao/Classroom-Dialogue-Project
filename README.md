@@ -3,9 +3,16 @@
 ## Table of content
 
 * **README:**
-  - Introduction to this research topic as a whole, to find information about the software (product), please go to the _software_ folder.
-* **Materials:**
-  - All kinds of content other than code.
+  - Introduction to this research topic as a whole, to find information about the software (product), please go to the _Development_ folder.
+    
+* **Materials:** _All kinds of content other than code._
+  - **Game Framework.pdf:** _Slides introducing this project as a blueprint_
+ 
+* **Development:** _Code, development notes, and software-related content._
+
+* **Images:** _Images used for **.md** files._
+
+* **Stack:** _Random, messy files we don't want to lose._
 
 ## Introduction:
 
