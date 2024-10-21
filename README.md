@@ -2,7 +2,7 @@
 
 > [!NOTE]
 > 这是最外层的README file，需要大家一起完成，特别是Nunu。在这里我们要介绍整个项目以及每个文件夹的内容，以防迷路。
-> 我目前写了一个非常粗略的框架，放了一些副标题， feel free to change anything you want when it makes sense.
+> 我目前写了一个非常粗略的框架，放了一些副标题。Feel free to change anything you want when it makes sense.
 > 晚一点我会把中文关于如何编辑.md文件的部分存进另外一个文件里，这部分temporarily放在最前面。
 
 > [!IMPORTANT]
