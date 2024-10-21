@@ -96,7 +96,7 @@
 
 ## Team Members:
 
-* **Qingyi Zheng**: PI?能叫PI么
+* **Qingyi Zheng**: Research Director
 
     【Nunu进来了自己写一下】Cambridge University - PhD Education
   
@@ -104,7 +104,7 @@
 
     逸涵自己写一下
 
-* **Yunyi Gao**: Development Director
+* **Yunyi Gao**: Software Development Director
   
    Purdue University - BS Computer Science
    
