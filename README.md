@@ -100,9 +100,9 @@
 
     【Nunu进来了自己写一下】Cambridge University - PhD Education
   
-* **Yihan Huang**:
+* **Yihan Huang**: User Experience Designer
 
-    逸涵自己写一下
+    Purdue University - MFA Interaction Design
 
 * **Yunyi Gao**: Software Development Director
   
