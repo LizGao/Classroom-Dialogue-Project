@@ -104,7 +104,7 @@
 
     Purdue University - MFA Interaction Design
 
-* **Yunyi Gao**: Software Development Director
+* **Yunyi Gao**: Software Developer
   
    Purdue University - BS Computer Science
    
