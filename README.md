@@ -104,7 +104,11 @@
   
 * **Yihan Huang**: User Experience Designer
 
-    Purdue University - MFA Interaction Design
+   Purdue University - MFA Interaction Design
+
+* **Yixin Hu**:
+
+   //TODO
 
 * **Yunyi Gao**: Software Developer
   
