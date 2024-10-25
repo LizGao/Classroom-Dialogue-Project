@@ -42,19 +42,16 @@
 
 * **Stack:** _Random, messy files we don't want to lose._
 
+
+
+
 ## Introduction:
 
 * **Background:**
   
-  This project is the product of Qingyi's PhD research topic on classroom dialog. The research is design-based (DBR), aimed at discovering the importance of the quality of classroom dialog to the intellectual and social development of adolescents.
+  This project is the design product of Qingyi's PhD research project on classroom dialogue and science subjects in secondary education. Her research uses design-based research (DBR) method. She expects the product will undergo two to three iterations according to her collaboration with first-line school teachers. The product aims to facilitate student-student and student-teacher **classroom dialogue**, as well as students' **intrinsic motivation** to engage with the learning materials. Her research aims focus on (1) finding supports and challenges taht science teachers in China face when trying to conduct high-quality classroom dialogue; (2) investigating the design components in which secondary school students find intrinsically motivating for them to engage further in learning and classroom dialogues.
 
-  Since adolescence is a particularly important era for identity formation, we are currently trying to develop a toolkit, that can be used by teachers to boost classroom dialog in high school science education, realizing our goals:
-    1. To improve the motivation of students
-    2. To ...
-
-  (...)
-
-* **Classroom Dialog:**
+* **Classroom Dialoge:**
 
 
 
@@ -65,13 +62,13 @@
 
 ## Design:
 
-* **Identity/Roles:**
+* **Identity/Character Roles:**
 
 ![Team-Roles](Images/Theory-of-Character-Design.jpg)
 
-* **Dialog Cards:**
+* **Dialogue Cards:**
 
-* **Story Line - Fantasy:**
+* **Narrative (Story) Texts:**
 
 
 
@@ -100,23 +97,27 @@
 
 * **Qingyi Zheng**: Research Director
 
-    【Nunu进来了自己写一下】Cambridge University - PhD Education
+    Cambridge University - PhD (Probationary) in Education
   
+* **Jiawen Yao**:
+
+    佳文自己写一下
+
+* **Xinyi Zheng**:
+
+    Sindy自己写一下
+ 
 * **Yihan Huang**: User Experience Designer
 
    Purdue University - MFA Interaction Design
 
 * **Yixin Hu**:
 
-   //TODO
+    馨馨自己写一下
 
 * **Yunyi Gao**: Software Developer
   
    Purdue University - BS Computer Science
-   
+  
      - _Algorithmic Foundations_ <br>
      - _Machine Intelligence_ <br>
-
-* **Xinyi Zheng**:
-
-    Sindy自己写一下
