@@ -49,9 +49,12 @@
 
 * **Background:**
   
-  This project is the design product of Qingyi's PhD research project on classroom dialogue and science subjects in secondary education. Her research uses design-based research (DBR) method. She expects the product will undergo two to three iterations according to her collaboration with first-line school teachers. The product aims to facilitate student-student and student-teacher **classroom dialogue**, as well as students' **intrinsic motivation** to engage with the learning materials. Her research aims focus on (1) finding supports and challenges taht science teachers in China face when trying to conduct high-quality classroom dialogue; (2) investigating the design components in which secondary school students find intrinsically motivating for them to engage further in learning and classroom dialogues.
+  This project is the design product of Qingyi's PhD research project on classroom dialogue and science subjects in secondary education. Her research uses design-based research (DBR) method. She expects the product will undergo two to three iterations according to her collaboration with first-line school teachers. The product aims to facilitate student-student and student-teacher **classroom dialogue**, as well as students' **intrinsic motivation** to engage with the learning materials. Her research aims focus on (1) finding supports and challenges taht science teachers in China face when trying to conduct high-quality classroom dialogue; (2) investigating the design components in which secondary school students find intrinsically motivating for them to engage further in learning and classroom dialogues. She may also look at (3) whether neurodiverse students are benefit more from the design product.
 
 * **Classroom Dialoge:**
+
+
+* **Intrinsic Motivation in Learning:**
 
 
 
@@ -62,13 +65,32 @@
 
 ## Design:
 
-* **Identity/Character Roles:**
+* **Introduction**
+
+  Our serious game product will have two modes, including (1) **solving** fantasised teaching content-related **problems** by role-playing in a group setting and (2) **previewing** and **reviewing** the teaching contents by interacting with the characters through *independent* choice making and feedback receiving. We decided to use these two modes because we wanted to provide a platform which invites students, especially those who are quiet, into classroom dialogues, so that a. they learn implicitly, through simulation, how to use dialogues to communicate science knowlegde; b. they can be intrinsically motivated to learn more sciences; c. their multimodal interaction with other students, teachers and teaching materials may be observed effectively; d. their cognitive processes may be visualised automatically to their teachers to guide lesson preparation. The teaching content-related aims are **to be determined** with first-line secondary school teachers.
+
+
+* **Narrative (Story) Texts:**   
+   *Intrinsic Motivation - Self-Determination*
+   *Intrinsic Motivation - Malone*
+   *Adolescent Motivation*
+
+* **Science Learning Tasks (Problems) Design:**
+   *Learning Material*
+   *Nature of Science Education*
+   *Classroom Dialogue Facilitators*
+
+* **Science Dialogue Simulation (Characeter) Design:**
+   *Learning Material*
+   *Nature of Science Education*
+   *Classroom Dialogue Structures*
+  
 
 ![Team-Roles](Images/Theory-of-Character-Design.jpg)
 
 * **Dialogue Cards:**
 
-* **Narrative (Story) Texts:**
+
 
 
 
@@ -81,12 +103,11 @@
 
 ![Timeline](Images/Timeline.jpg)
 
-- Light Red: Work with participants (teachers and their classes)
-- Dark Red: Work with IT/Software team
-- Green: Work with supervisor
-- Light Blue: Nunu's work
-- Dark Blue: Product testing
-
+- Light Red: Liaising with science teachers
+- Drak Red: Liaising with technological facilitator team (creating, developing and iterating the design product)
+- Light Green: Pilot study data collection and analysis: work with science teachers
+- Dark Green: Design product testing; DBR data collection and analysis: work with first-line science teachers and their classes
+- Blue: Independent work (with University of Cambridge)
 
 
 
