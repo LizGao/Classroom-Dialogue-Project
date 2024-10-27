@@ -101,7 +101,7 @@
 
 ## Timeline:
 
-![Timeline](Images/Timeline.jpg)
+![Timeline](Images/Timeline_V24_10_27.png)
 
 - Light Red: Liaising with science teachers
 - Drak Red: Liaising with technological facilitator team (creating, developing and iterating the design product)
