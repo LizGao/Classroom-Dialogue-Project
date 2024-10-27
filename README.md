@@ -1,4 +1,4 @@
-# Classroom-Dialog-Project
+# Classroom-Dialogue-Project
 
 
 > [!NOTE]
