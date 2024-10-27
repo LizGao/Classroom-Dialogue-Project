@@ -71,25 +71,26 @@
 
 
 * **Narrative (Story) Texts:**   
-   *Intrinsic Motivation - Self-Determination*
-   *Intrinsic Motivation - Malone*
-   *Adolescent Motivation*
+  - *Intrinsic Motivation - Self-Determination*
+  - *Intrinsic Motivation - Malone*
+  - *Adolescent Motivation*
 
 * **Science Learning Tasks (Problems) Design:**
-   *Learning Material*
-   *Nature of Science Education*
-   *Classroom Dialogue Facilitators*
+  - *Learning Material*
+  - *Nature of Science Education*
+  - *Classroom Dialogue Facilitators*
 
 * **Science Dialogue Simulation (Characeter) Design:**
-   *Learning Material*
-   *Nature of Science Education*
-   *Classroom Dialogue Structures*
-  
+  - *Learning Material*
+  - *Nature of Science Education*
+  - *Classroom Dialogue Structures*
 
 ![Team-Roles](Images/Theory-of-Character-Design.jpg)
 
 * **Dialogue Cards:**
-
+  - *Learning Material*
+  - *Nature of Science Education*
+  - *Classroom Dialogue Structures*
 
 
 
