@@ -125,9 +125,9 @@
 
     佳文自己写一下
 
-* **Xinyi Zheng**:
+* **Xinyi (Sindy) Zheng**: Product Manager
 
-    Sindy自己写一下
+   Purdue University - BS IT System Design & Digital Criminology
  
 * **Yihan Huang**: User Experience Designer
 
