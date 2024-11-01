@@ -7,6 +7,8 @@ public class Client {
 
         try {
             Socket socket = new Socket("localhost", 8080);      // Connect to Server
+            System.out.println("Connected to server");
+
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 

@@ -33,7 +33,7 @@ public class Server {
         private BufferedReader in;
 
         // Constructor
-        public ClientHandler(Socket client) {
+        public ClientHandler(Socket client, PrintWriter out, BufferedReader in) {
             this.client = client;
         }
 
@@ -44,9 +44,6 @@ public class Server {
         public void run() {
             try {
                 // Set IO streams
-                out = new PrintWriter(client.getOutputStream(), true);
-                in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
                 this.sendMessage("Hi, Client.");
                 String message;
                 while ((message = in.readLine()) != null) {
@@ -79,9 +76,9 @@ public class Server {
         String[] requestText = request.toString().split(" ");
         if (requestText[1].equals("/Classroom")) {
             // TODO Pull up the class user list
-            ClientHandler host = new ClientHandler(client);
-            hosts.add(host);
-            new Thread(host).start();
+//            ClientHandler host = new ClientHandler(client);
+//            hosts.add(host);
+//            new Thread(host).start();
         } else {
             // Respond to request
             OutputStream clientOut = client.getOutputStream();
@@ -126,7 +123,10 @@ public class Server {
                     System.out.println("Client connected: " + client.toString());       // Client connected
 
                     // Input organize
-                    ClientHandler clientHandler = new ClientHandler(client);
+                    PrintWriter out = new PrintWriter(client.getOutputStream(), true);
+                    BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
+
+                    ClientHandler clientHandler = new ClientHandler(client, out, in);
                     hosts.add(clientHandler);
                     new Thread(clientHandler).start();
 
