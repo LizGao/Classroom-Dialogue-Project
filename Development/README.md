@@ -29,3 +29,27 @@ BTW: The language Flutter uses is called **Dart**.
 [How to write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 
 :point_up_2: Please find an introduction to the features of Flutter here. It has basically everything you'll need: UI & More
+
+
+## Resources:
+
+### Backend Field Map
+
+[后端综述](https://www.bilibili.com/video/BV1hH4y1n7b4/?spm_id_from=333.337.search-card.all.click&vd_source=db70fd9c2492e86c888fbc7a5f78f6ca)
+
+### About Flutter and UI
+
+[Flutter可爱小熊！](https://www.bilibili.com/video/BV1Z6yuYkELt/?share_source=copy_web&vd_source=b56a8a69dd38510aa3ad0e132fa22597)
+
+[Flutter x Dart教学](https://www.bilibili.com/video/BV1S4411E7LY/?share_source=copy_web&vd_source=b56a8a69dd38510aa3ad0e132fa22597)
+
+[Flutter实战](https://www.bilibili.com/video/BV1Qb421Y7SV/?p=4&share_source=copy_web&vd_source=b56a8a69dd38510aa3ad0e132fa22597)
+
+### About Frontend-Backend Communication
+
+[前后端接口规范](https://github.com/f2e-journey/treasure/blob/master/api.md)
+
+[前后端通讯：前端调用后端接口的五种方式，优劣势和场景](https://blog.csdn.net/m0_57344393/article/details/136084795)
+
+[Geeks for Geeks: How to Connect Front End and Backend](https://www.geeksforgeeks.org/how-to-connect-front-end-and-backend/)
+

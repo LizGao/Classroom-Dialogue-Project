@@ -49,7 +49,7 @@
 
 * **Background:**
   
-  This project is the design product of Qingyi's PhD research project on classroom dialogue and science subjects in secondary education. Her research uses design-based research (DBR) method. She expects the product will undergo two to three iterations according to her collaboration with first-line school teachers. The product aims to facilitate student-student and student-teacher **classroom dialogue**, as well as students' **intrinsic motivation** to engage with the learning materials. Her research aims focus on (i) finding supports and challenges taht science teachers in China face when trying to conduct high-quality classroom dialogue; (ii) investigating the design components in which secondary school students find intrinsically motivating for them to engage further in learning and classroom dialogues. She may also look at (iii) whether neurodiverse students are benefit more from the design product.
+  This project is the design product of Qingyi's PhD research project on classroom dialogue and science subjects in secondary education. Her research uses design-based research (DBR) method. She expects the product will undergo two to three iterations according to her collaboration with first-line school teachers. The product aims to facilitate student-student and student-teacher **classroom dialogue**, as well as students' **intrinsic motivation** to engage with the learning materials. Her research aims focus on (i) finding supports and challenges taht science teachers in China face when trying to conduct high-quality classroom dialogue; (ii) investigating the design components in which secondary school students find intrinsically motivating for them to engage further in learning and classroom dialogues. She may also look at (iii) whether neurodiverse students benefit more from the design product.
 
 * **Classroom Dialoge:**
 
@@ -57,9 +57,22 @@
 * **Intrinsic Motivation in Learning:**
 
 
-
-
-
+## Scale:
+   产品用户：高一/高二，中国物化生心课程，教师+学生
+	
+   产品模式：手机应用【教师端+学生端+admin端】
+	
+   项目时长：24.9~25.9 基于采访设计软件框架 25.9后给予反馈迭代两次
+	
+   使用场景：
+	
+      课前（教师备课/学生预习）
+		
+      课中（教师发牌+task/学生看牌+task）
+		
+      课后（教师上传录音/学生复习）
+		
+   产品目的：促进学生dialogu engagement + motivation
 
 
 
@@ -125,9 +138,9 @@
 
     佳文自己写一下
 
-* **Xinyi Zheng**:
+* **Xinyi (Sindy) Zheng**: Product Manager
 
-    Sindy自己写一下
+   Purdue University - BS IT System Design & Digital Criminology
  
 * **Yihan Huang**: User Experience Designer
 
