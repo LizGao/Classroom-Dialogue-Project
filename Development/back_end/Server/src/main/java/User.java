@@ -20,6 +20,10 @@ public class User {
     private Avatar avatar;
 
     // Constructor
+    public User() {
+
+    }
+
     public User(String name, String userID, Avatar avatar) {
         this.name = this.name;
         this.userID = this.userID;
