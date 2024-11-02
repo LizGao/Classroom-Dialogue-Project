@@ -48,7 +48,15 @@ public class Client {
             while (true)
             {
                 System.out.println(in.readUTF());
-                String tosend = scn.nextLine();
+
+                // INPUT: Enter testing input
+
+                String tosend;
+
+                // tosend = scn.nextLine();
+                tosend = "Hello Server, get me a feedback.";
+
+
                 out.writeUTF(tosend);
 
                 // If client sends exit,close this connection

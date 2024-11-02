@@ -1,7 +1,5 @@
 import java.io.*;
-import java.net.InetAddress;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -78,6 +76,9 @@ public class Server {
                     out.writeUTF("You said: " + received);
                     Date date = new Date();
 
+                } catch (SocketException e) {
+                    System.out.println("Unexpected disconnection from client: " + this.clientSocket);
+                    break;
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
