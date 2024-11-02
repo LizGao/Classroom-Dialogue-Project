@@ -1,17 +1,36 @@
-// Java implementation for a client
-// Save file as Client.java
-
 import java.io.*;
 import java.net.*;
 import java.util.Scanner;
 
+/**
+ *
+ * This Client class is for testing use only. There are several methods that can be used to test the Server
+ *
+ */
+
 // Client class
-public class Client
-{
-    public static void main(String[] args) throws IOException
-    {
-        try
-        {
+public class Client {
+
+    //
+    public static class ClientThread extends Thread {
+
+        @Override
+        public void run() {
+            try {
+                startClient();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+
+    // Client process
+    public static void startClient() throws IOException {
+
+        try {
             Scanner scn = new Scanner(System.in);
 
             // getting localhost ip
@@ -21,16 +40,16 @@ public class Client
             Socket s = new Socket(ip, 8080);
 
             // obtaining input and out streams
-            DataInputStream dis = new DataInputStream(s.getInputStream());
-            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            DataInputStream in = new DataInputStream(s.getInputStream());
+            DataOutputStream out = new DataOutputStream(s.getOutputStream());
 
             // the following loop performs the exchange of
             // information between client and client handler
             while (true)
             {
-                System.out.println(dis.readUTF());
+                System.out.println(in.readUTF());
                 String tosend = scn.nextLine();
-                dos.writeUTF(tosend);
+                out.writeUTF(tosend);
 
                 // If client sends exit,close this connection
                 // and then break from the while loop
@@ -43,16 +62,30 @@ public class Client
                 }
 
                 // printing date or time as requested by client
-                String received = dis.readUTF();
+                String received = in.readUTF();
                 System.out.println(received);
             }
 
             // closing resources
             scn.close();
-            dis.close();
-            dos.close();
+            in.close();
+            out.close();
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+
+
+
+    public static void main(String[] args) throws IOException {
+
+        Thread[] ClientThreads = new Thread[40];
+        for (int i = 0; i < 40; i++) {
+            ClientThreads[i] = (Thread) new ClientThread();
+            ClientThreads[i].start();
+        }
+
+
     }
 }

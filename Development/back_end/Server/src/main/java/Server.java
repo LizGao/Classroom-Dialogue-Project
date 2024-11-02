@@ -95,7 +95,7 @@ public class Server {
         }
     }
 
-    public static void handleRequest(Socket client, StringBuilder request) throws IOException {
+    public static void handleHTTPRequest(Socket client, StringBuilder request) throws IOException {
         // Print request
         System.out.println("--REQUEST--");
         System.out.println(request);
@@ -146,7 +146,7 @@ public class Server {
 
 
     // Start the server
-    public void start() throws Exception {
+    public void startServer() throws Exception {
 
         ServerSocket serverSocket = new ServerSocket(8080);
         System.out.println("Server started");       // Start Message
@@ -163,9 +163,6 @@ public class Server {
                 hosts.add((ClientHandler) clientHandler);
                 clientHandler.start();
 
-//                     client.close();
-//                     System.out.println("Client socket closed.");
-
             } catch (IOException e) {
                 serverSocket.close();
                 e.printStackTrace();
@@ -179,7 +176,7 @@ public class Server {
 
         Server myServer = new Server();
         try {
-            myServer.start();
+            myServer.startServer();
         } catch (Exception e) {
             System.out.println(e.toString());
         }
