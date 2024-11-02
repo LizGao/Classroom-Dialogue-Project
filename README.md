@@ -136,7 +136,7 @@
   
 * **Jiawen Yao**:
 
-    佳文自己写一下
+    Rice University - MS CS
 
 * **Xinyi (Sindy) Zheng**: Product Manager
 
