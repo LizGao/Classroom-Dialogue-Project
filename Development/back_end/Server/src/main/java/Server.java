@@ -3,7 +3,10 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -27,42 +30,67 @@ public class Server {
     }
 
     // Classroom thread runnable
-    static class ClientHandler implements Runnable {
-        private Socket client;
-        private PrintWriter out;
-        private BufferedReader in;
+    static class ClientHandler extends Thread {
+
+        DateFormat fordate = new SimpleDateFormat("yyyy/MM/dd");
+        DateFormat fortime = new SimpleDateFormat("hh:mm:ss");
+
+        private Socket clientSocket;
+        private DataInputStream in;
+        private DataOutputStream out;
 
         // Constructor
-        public ClientHandler(Socket client, PrintWriter out, BufferedReader in) {
-            this.client = client;
+        public ClientHandler(Socket client, DataInputStream in, DataOutputStream out) {
+            this.in = in;
+            this.out = out;
+            this.clientSocket = client;
         }
 
-        public void sendMessage(String message) {
-            out.println(message);
+        public void sendMessage(String message) throws IOException {
+            out.write(message.getBytes());
         }
 
+        @Override
         public void run() {
-            try {
-                // Set IO streams
-                this.sendMessage("Hi, Client.");
-                String message;
-                while ((message = in.readLine()) != null) {
-                // TODO RESPOND ON EACH LINE OF INPUT
-                    System.out.println("Server got client message: " + message);
-                    Server.broadcast(message);                  // Broadcast to all clients
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                // Close everything
+            String received;
+            String toreturn;
+            while (true)
+            {
                 try {
-                    in.close();
-                    out.close();
-                    client.close();
-                    hosts.remove(this);
+
+                    // Ask user what he wants
+                    out.writeUTF("What do you want to say?\n"+
+                            "Type EXIT to terminate connection.");
+
+                    // receive the answer from client
+                    received = in.readUTF();
+
+                    if(received.equals("EXIT"))
+                    {
+                        System.out.println("Client " + this.clientSocket + " sends exit...");
+                        System.out.println("Closing this connection.");
+                        this.clientSocket.close();
+                        System.out.println("Connection closed");
+                        break;
+                    }
+
+                    // Write back
+                    out.writeUTF("You said: " + received);
+                    Date date = new Date();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+
+            try
+            {
+                // closing resources
+                this.in.close();
+                this.out.close();
+
+            }catch(IOException e){
+                e.printStackTrace();
             }
         }
     }
@@ -92,7 +120,12 @@ public class Server {
     // Broadcast received message to all clients
     public static void broadcast(String message) {
         for (ClientHandler host : hosts) {
-            host.sendMessage(message);
+            try {
+                host.sendMessage(message);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 
@@ -115,27 +148,30 @@ public class Server {
     // Start the server
     public void start() throws Exception {
 
-        try (ServerSocket serverSocket = new ServerSocket(8080)) {
+        ServerSocket serverSocket = new ServerSocket(8080);
+        System.out.println("Server started");       // Start Message
+        while (true) {
+            try {
+                Socket clientSocket = serverSocket.accept();
+                System.out.println("Client connected: " + clientSocket.toString());       // Client connected
 
-            System.out.println("Server started");       // Start Message
-            while (true) {
-                try (Socket client = serverSocket.accept()) {
-                    System.out.println("Client connected: " + client.toString());       // Client connected
+                // Input organize
+                DataInputStream in = new DataInputStream(clientSocket.getInputStream());
+                DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
-                    // Input organize
-                    PrintWriter out = new PrintWriter(client.getOutputStream(), true);
-                    BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-
-                    ClientHandler clientHandler = new ClientHandler(client, out, in);
-                    hosts.add(clientHandler);
-                    new Thread(clientHandler).start();
+                Thread clientHandler = new ClientHandler(clientSocket, in, out);
+                hosts.add((ClientHandler) clientHandler);
+                clientHandler.start();
 
 //                     client.close();
 //                     System.out.println("Client socket closed.");
 
-                }
+            } catch (IOException e) {
+                serverSocket.close();
+                e.printStackTrace();
             }
         }
+
     }
 
 

@@ -1,41 +1,58 @@
+// Java implementation for a client
+// Save file as Client.java
+
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
-public class Client {
+// Client class
+public class Client
+{
+    public static void main(String[] args) throws IOException
+    {
+        try
+        {
+            Scanner scn = new Scanner(System.in);
 
-    public static void main(String[] args) {
+            // getting localhost ip
+            InetAddress ip = InetAddress.getByName("localhost");
 
-        try {
-            Socket socket = new Socket("localhost", 8080);      // Connect to Server
-            System.out.println("Connected to server");
+            // establish the connection with server port 5056
+            Socket s = new Socket(ip, 8080);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            // obtaining input and out streams
+            DataInputStream dis = new DataInputStream(s.getInputStream());
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
 
-            // Reader thread
-            new Thread(() -> {
-                String message;
-                try {
-                    while ((message = in.readLine()) != null) {
-                        System.out.println("Client got Message: " + message);
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
+            // the following loop performs the exchange of
+            // information between client and client handler
+            while (true)
+            {
+                System.out.println(dis.readUTF());
+                String tosend = scn.nextLine();
+                dos.writeUTF(tosend);
+
+                // If client sends exit,close this connection
+                // and then break from the while loop
+                if(tosend.equals("Exit"))
+                {
+                    System.out.println("Closing this connection : " + s);
+                    s.close();
+                    System.out.println("Connection closed");
+                    break;
                 }
-            }).start();
 
-            // Send message
-            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
-            String input;
-            while ((input = userInput.readLine()) != null) {
-                out.println(input);
+                // printing date or time as requested by client
+                String received = dis.readUTF();
+                System.out.println(received);
             }
-        } catch (IOException e) {
+
+            // closing resources
+            scn.close();
+            dis.close();
+            dos.close();
+        }catch(Exception e){
             e.printStackTrace();
         }
     }
-
-
-
-
 }
