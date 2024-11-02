@@ -1,3 +1,7 @@
+import java.util.Dictionary;
+import java.util.Hashtable;
+
+
 public class User {
 
     enum Avatar {
@@ -13,7 +17,7 @@ public class User {
         AOITORI
     }
 
-    static private String[] passwords;
+    static private Dictionary<String, Integer> passwordBook = new Hashtable<>();;
     private String name;
     private String userID;
     private String gameProgress;
