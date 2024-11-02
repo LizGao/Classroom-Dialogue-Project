@@ -118,7 +118,7 @@
 ![Timeline](Images/Timeline_V24_10_27.png)
 
 - Light Red: Liaising with science teachers
-- Drak Red: Liaising with technological facilitator team (creating, developing and iterating the design product)
+- Dark Red: Liaising with technological facilitator team (creating, developing and iterating the design product)
 - Light Green: Pilot study data collection and analysis: work with science teachers
 - Dark Green: Design product testing; DBR data collection and analysis: work with first-line science teachers and their classes
 - Blue: Independent work (with University of Cambridge)
