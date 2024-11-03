@@ -132,7 +132,7 @@
 
 * **Qingyi Zheng**: Research Director
 
-    Cambridge University - PhD (Probationary) in Education
+    University of Cambridge - PhD (Probationary) in Education
   
 * **Jiawen Yao**: Technical Advisor
 
