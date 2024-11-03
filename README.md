@@ -134,7 +134,7 @@
 
     Cambridge University - PhD (Probationary) in Education
   
-* **Jiawen Yao**:
+* **Jiawen Yao**: Technical Advisor
 
     Rice University - MS CS
 
