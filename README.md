@@ -148,7 +148,7 @@
 
 * **Yixin Hu**:
 
-    馨馨自己写一下
+    McGill University - BS Computer Science and Biology
 
 * **Yunyi Gao**: Software Developer
   
