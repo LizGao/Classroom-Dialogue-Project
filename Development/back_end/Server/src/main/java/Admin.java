@@ -1,3 +1,8 @@
+/**
+ * Admin class
+ * Extends User calss
+ */
+
 public class Admin extends User {
 
     // Constructor

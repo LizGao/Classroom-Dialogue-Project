@@ -1,3 +1,8 @@
+/**
+ * Student class
+ * Extends User calss
+ */
+
 public class Student extends User {
 
     // Constructor

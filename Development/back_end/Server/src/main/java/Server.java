@@ -7,9 +7,9 @@ import java.util.concurrent.TimeUnit;
 
 
 /**
- *
- * A real-time server
- *
+ * Real-time responding server, all service should be called and delivered from this port.
+ * Implements service server layer, handles the webSocket connections and handles clients in separate threads.
+ * Managed and created by ServerKernel.
  */
 
 
@@ -30,7 +30,7 @@ public class Server {
      * @param request
      * @throws IOException
      * Receives HTTP requests and send back responds.
-     * !!This methods should be used OUTSIDE of classroom
+     * !! Use OUTSIDE of classroom
      * TODO Add a HTTPRequest class to break down requests
      */
     public static void handleHTTPRequest(Socket client, StringBuilder request) throws IOException {
@@ -54,7 +54,7 @@ public class Server {
 
     /**
      * @param message
-     * Broadcast received message to all connected clients.
+     * Broadcasts received message to all connected clients.
      */
     public static void broadcast(String message) {
         for (ClientHandler client : clients) {
@@ -70,9 +70,9 @@ public class Server {
 
     /**
      * @throws Exception
-     * Entry method of Server.
-     * Start the server, called by main().
-     * Forever wait to accept connections from clients, and create a thread for each client.
+     * Entry method of Server execution flow.
+     * Starts the server, called by main().
+     * Forever waits to accept connections from clients, and create a thread for each client.
      */
     public void startServer() throws Exception {
 
@@ -102,7 +102,7 @@ public class Server {
 
     /**
      * Client Handler, called by startServer().
-     * Handle client connections under TCP connection (java Socket).
+     * Handles client connections under TCP connection (java Socket).
      * Current: longterm TCP connection, send back the same message as the client sends it.
      * ?Receive HTTP request, if request is to start or enter a classroom, keep the connection
      */

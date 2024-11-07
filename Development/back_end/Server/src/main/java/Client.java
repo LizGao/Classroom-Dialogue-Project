@@ -3,9 +3,7 @@ import java.net.*;
 import java.util.Scanner;
 
 /**
- *
  * This Client class is for testing use only. There are several methods that can be used to test the Server
- *
  */
 
 // Client class
