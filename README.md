@@ -132,11 +132,11 @@
 
 * **Qingyi Zheng**: Research Director
 
-    Cambridge University - PhD (Probationary) in Education
+    University of Cambridge - PhD (Probationary) in Education
   
-* **Jiawen Yao**:
+* **Jiawen Yao**: Technical Advisor
 
-    佳文自己写一下
+    Rice University - MS CS
 
 * **Xinyi (Sindy) Zheng**: Product Manager
 
@@ -148,7 +148,7 @@
 
 * **Yixin Hu**:
 
-    馨馨自己写一下
+    McGill University - BS Computer Science and Biology
 
 * **Yunyi Gao**: Software Developer
   
