@@ -26,12 +26,12 @@ public class Server {
 
 
     /**
-     * @param client
-     * @param request
-     * @throws IOException
      * Receives HTTP requests and send back responds.
      * !! Use OUTSIDE of classroom
      * TODO Add a HTTPRequest class to break down requests
+     * @param client
+     * @param request
+     * @throws IOException
      */
     public static void handleHTTPRequest(Socket client, StringBuilder request) throws IOException {
         // Print request
@@ -52,9 +52,13 @@ public class Server {
         }
     }
 
+
+// !!! Client methods:
+
+
     /**
-     * @param message
      * Broadcasts received message to all connected clients.
+     * @param message
      */
     public static void broadcast(String message) {
         for (ClientHandler client : clients) {
@@ -68,11 +72,37 @@ public class Server {
     }
 
 
+// !!! Server methods:
+
+
     /**
-     * @throws Exception
+     * Gets login request from the client and checks its password
+     * @param clientSocket
+     * @param in
+     * @param out
+     * @return clientHandler
+     */
+    public static ClientHandler login(Socket clientSocket, DataInputStream in, DataOutputStream out) {
+
+        boolean correct = true;
+        // TODO Implement this method
+        ClientHandler clientHandler = null;
+        User user = null;
+
+        if (correct) {
+            clientHandler = new ClientHandler(user, clientSocket, in, out);
+        }
+
+        return clientHandler;
+    }
+
+
+
+    /**
      * Entry method of Server execution flow.
      * Starts the server, called by main().
      * Forever waits to accept connections from clients, and create a thread for each client.
+     * @throws Exception
      */
     public void startServer() throws Exception {
 
@@ -87,7 +117,8 @@ public class Server {
                 DataInputStream in = new DataInputStream(clientSocket.getInputStream());
                 DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
-                Thread clientHandler = new ClientHandler(clientSocket, in, out);
+                Thread clientHandler = login(clientSocket, in, out);
+                //TODO handle null return value.
                 clients.add((ClientHandler) clientHandler);
                 clientHandler.start();
 
@@ -100,6 +131,7 @@ public class Server {
     }
 
 
+// !!! ClientHandler class:
     /**
      * Client Handler, called by startServer().
      * Handles client connections under TCP connection (java Socket).
@@ -108,15 +140,17 @@ public class Server {
      */
     static class ClientHandler extends Thread {
 
+        private User user;
         private Socket clientSocket;
         private DataInputStream in;
         private DataOutputStream out;
 
         // Constructor
-        public ClientHandler(Socket client, DataInputStream in, DataOutputStream out) {
+        public ClientHandler(User user, Socket clientSocket, DataInputStream in, DataOutputStream out) {
+            this.user = user;
             this.in = in;
             this.out = out;
-            this.clientSocket = client;
+            this.clientSocket = clientSocket;
         }
 
         public void sendMessage(String message) throws IOException {
