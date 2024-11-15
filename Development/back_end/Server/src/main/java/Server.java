@@ -16,11 +16,13 @@ import java.util.concurrent.TimeUnit;
 public class Server {
 
     // Fields
+    public String name;
     public int stage;
     private static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
 
     // Constructor
-    Server() {
+    Server(String name) {
+        this.name = name;
         this.stage = 1;
     }
 
@@ -206,9 +208,9 @@ public class Server {
         }
     }
 
-    public static void main (String[] args) {
+    public static void main () {
 
-        Server myServer = new Server();
+        Server myServer = new Server("TestServer");
         try {
             myServer.startServer();
         } catch (Exception e) {

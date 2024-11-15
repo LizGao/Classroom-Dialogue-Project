@@ -1,9 +1,10 @@
+import java.util.Dictionary;
+import java.util.Hashtable;
+
+
 /**
  * User class
  */
-
-import java.util.Dictionary;
-import java.util.Hashtable;
 
 
 public class User {
@@ -21,7 +22,7 @@ public class User {
         AOITORI
     }
 
-    static private Dictionary<String, Integer> passwordBook = new Hashtable<>();;
+    static private Dictionary<String, Integer> passwordBook = new Hashtable<>();
     private String name;
     private String userID;
     private String gameProgress;
