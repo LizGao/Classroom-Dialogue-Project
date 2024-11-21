@@ -18,7 +18,7 @@ public class Server {
     // Fields
     public static String name;
     public static int stage;
-    private static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
+    public static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
 
     // Constructor
     Server(String name) {
@@ -119,10 +119,10 @@ public class Server {
                 DataInputStream in = new DataInputStream(clientSocket.getInputStream());
                 DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
-                Thread clientHandler = login(clientSocket, in, out);
+                ClientHandler clientHandler = login(clientSocket, in, out);
                 //TODO handle null return value.
                 clients.add((ClientHandler) clientHandler);
-                clientHandler.start();
+                clientHandler.acceptClient();
 
             } catch (IOException e) {
                 serverSocket.close();           //! May cause server failure
@@ -133,80 +133,7 @@ public class Server {
     }
 
 
-// !!! ClientHandler class:
-    /**
-     * Client Handler, called by startServer().
-     * Handles client connections under TCP connection (java Socket).
-     * Current: longterm TCP connection, send back the same message as the client sends it.
-     * ?Receive HTTP request, if request is to start or enter a classroom, keep the connection
-     */
-    static class ClientHandler extends Thread {
-
-        private User user;
-        private Socket clientSocket;
-        private DataInputStream in;
-        private DataOutputStream out;
-
-        // Constructor
-        public ClientHandler(User user, Socket clientSocket, DataInputStream in, DataOutputStream out) {
-            this.user = user;
-            this.in = in;
-            this.out = out;
-            this.clientSocket = clientSocket;
-        }
-
-        public void sendMessage(String message) throws IOException {
-            out.write(message.getBytes());
-        }
-
-        @Override
-        public void run() {
-            String received;
-            String toreturn;
-            while (true) {
-                try {
-
-                    // Send message to Client, asking what they want.
-                    out.writeUTF("What do you want to say?\n"+
-                            "Type EXIT to terminate connection.");
-
-                    // receive the answer from client
-                    received = in.readUTF();
-
-                    if(received.equals("EXIT"))
-                    {
-                        System.out.println("Client " + this.clientSocket + " sends exit...");
-                        System.out.println("Closing this connection.");
-                        this.clientSocket.close();
-                        System.out.println("Connection closed");
-                        break;
-                    }
-
-                    // Respond
-                    out.writeUTF("You said: " + received);
-                    Date date = new Date();
-
-                } catch (SocketException e) {
-                    System.out.println("Unexpected disconnection from client: " + this.clientSocket);
-                    clients.remove(this);
-                    break;
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-            try
-            {
-                // closing resources
-                this.in.close();
-                this.out.close();
-                this.clientSocket.close();
-
-            } catch(IOException e){
-                e.printStackTrace();
-            }
-        }
-    }
+// !!! MAIN()
 
     public static void main (String[] args) {
 
