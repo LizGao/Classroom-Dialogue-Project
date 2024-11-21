@@ -34,7 +34,7 @@ public class Client {
             // getting localhost ip
             InetAddress ip = InetAddress.getByName("localhost");
 
-            // establish the connection with server port 5056
+            // establish the connection with server port 8080
             Socket s = new Socket(ip, 8080);
 
             // obtaining input and out streams
@@ -51,8 +51,8 @@ public class Client {
 
                 String tosend;
 
-                // tosend = scn.nextLine();
-                tosend = "Hello Server, get me a feedback.";
+                tosend = scn.nextLine();
+//                tosend = "Hello Server, get me a feedback.";
 
 
                 out.writeUTF(tosend);
@@ -86,11 +86,14 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        Thread[] ClientThreads = new Thread[40];
-        for (int i = 0; i < 40; i++) {
-            ClientThreads[i] = (Thread) new ClientThread();
-            ClientThreads[i].start();
-        }
+
+        startClient();
+
+//        Thread[] ClientThreads = new Thread[40];
+//        for (int i = 0; i < 40; i++) {
+//            ClientThreads[i] = (Thread) new ClientThread();
+//            ClientThreads[i].start();
+//        }
 
 
     }

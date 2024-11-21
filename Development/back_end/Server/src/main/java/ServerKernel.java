@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
+ * !! GIVE UP THIS FILE: this will be implemented in C++
+ *
  * Kernel of the entire Java program. Manages server instance(s).
  * Has three major jobs:
  *      1. Shell interface of the server, allows manual sudo operations on files
@@ -109,7 +111,7 @@ public class ServerKernel {
         Server target = new Server(serverName);
         servers.add(target);
         try {
-            target.main();
+            target.startServer();
             System.out.println("Server started:" + serverName);
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,7 +129,7 @@ public class ServerKernel {
 
         Server target = servers.get(serverIndex);
         try {
-            target.main();
+            target.startServer();
             System.out.println("Server started:" + target.name);
         } catch (Exception e) {
             e.printStackTrace();

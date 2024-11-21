@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
 public class Server {
 
     // Fields
-    public String name;
-    public int stage;
+    public static String name;
+    public static int stage;
     private static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
 
     // Constructor
@@ -208,7 +208,7 @@ public class Server {
         }
     }
 
-    public static void main () {
+    public static void main (String[] args) {
 
         Server myServer = new Server("TestServer");
         try {
