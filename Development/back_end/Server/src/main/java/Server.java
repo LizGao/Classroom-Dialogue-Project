@@ -121,7 +121,7 @@ public class Server {
 
                 ClientHandler clientHandler = login(clientSocket, in, out);
                 //TODO handle null return value.
-                clients.add((ClientHandler) clientHandler);
+                clients.add(clientHandler);
                 clientHandler.acceptClient();
 
             } catch (IOException e) {

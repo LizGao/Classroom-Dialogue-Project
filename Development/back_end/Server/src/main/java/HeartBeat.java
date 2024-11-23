@@ -21,12 +21,65 @@ public class HeartBeat {
     int numOfNewClients;
     String timeStamp;
     String name;
-    String ID;
+    String ServerID;
 
+    public HeartBeat(Server server, int heartBeatSeq, int numOfClients,
+                     int numOfNewClients, String timeStamp, String ServerID) {
+        this.server = server;
+        this.heartBeatSeq = heartBeatSeq;
+        this.stage = this.server.stage;
+        this.numOfClients = numOfClients;
+        this.numOfNewClients = numOfNewClients;
+        this.timeStamp = timeStamp;
+        this.name = this.server.name;
+        this.ServerID = ServerID;
+    }
+
+    @Override
     public String toString() {
-        String result = "";
+        // Map stage codes to descriptions
+        String stageDescription;
+        switch (stage) {
+            case 0:
+                stageDescription = "[ZOMBIE] Terminated";
+                break;
+            case 1:
+                stageDescription = "[Healthy] Normally Operating";
+                break;
+            case 2:
+                stageDescription = "[Terminating] By Kernel Request";
+                break;
+            case 3:
+                stageDescription = "[Terminating] By Error";
+                break;
+            default:
+                stageDescription = "[Unknown]";
+        }
 
-        return result;
+        return String.format(
+                "HeartBeat { \n" +
+                        "  >>> %d @%s\n" +
+                        "  >>> %s\n" +
+                        "  >>> %s\n" +
+                        "  >>> Stage %d (%s)\n" +
+                        "  >>> Number of Clients: %d\n" +
+                        "  >>> Number of New Clients: %d\n" +
+                        "}",
+                heartBeatSeq,
+                timeStamp,
+                server != null ? server.toString() : "N/A",
+                this.server.name,
+                stage, stageDescription,
+                numOfClients,
+                numOfNewClients
+        );
+
+    }
+
+    public static void main(String[] args) {
+        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr"), 1, 100, 20,
+                "2024/11/23-2:43:08", "a7c800f1");
+        System.out.println(heartBeat.toString());
     }
 
 }

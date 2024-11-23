@@ -1,0 +1,73 @@
+# Game Script Compile Pseudo-code
+
+- Tokens used for the script:
+
+    >>> Scene
+    # Scene setup (e.g. classroom, lab, planet-A, etc.)
+    # "SCENE_1" compiles directly to background picture file
+    # "SCENE: BLANK" -> Black background
+
+    SCENE: SCENE_1'\n''\n'
+
+    >>> Line
+    # Character_Expression token followed by a dialogue line
+    # [CharacterA_ExpressionX] compiles directly to picture file of character A with expression X
+    # [BLANK] -> No character, only show background
+
+    [Character_Expression]:'\n'
+    Sentence, this is a sentence.'\n''\n'
+
+    >>> Call a complex method
+    # Call a complex method written somewhere in the code, e.g. set avatar, change user name, jump to a game session, etc.
+
+    METHOD'\n'
+    method name'\n'
+
+    >>> Text input
+    # Takes text input from user
+
+    >>> Multiple choices
+    # Takes multiple choice selection from user and take action according to choice
+
+    CHOICE'\n'
+    {'\n'
+    1'\n'
+    Choice prompt, e.g. "Yes"'\n'
+    Program action'\n'
+    '\n'
+    2'\n'
+    Choice prompt, e.g. "No"'\n'
+    Program action'\n'
+    }'\n''\n'
+
+    >>> Line jump
+    # Jump to specified label location
+
+    GOTO <Label Name>'\n''\n'
+
+    >>> Line location label
+    # Marks the line location, jump based on labels instead of hardcoded line numbers
+
+    <Label Name>'\n''\n'
+
+    >>> Black transition
+    # Black-scene transition
+
+    $$$'\n'
+
+    >>> White transition
+    # White-scene transition
+
+    ###'\n'
+
+- Compilation strategy:
+    The compilation process of the game script will be very similar as to compile an assembly code.
+
+    We scan the file for two times. In the first time, we scan through and mark labels. For each label, we store <label, line#> key-value pair.
+    Every time when we see "GOTO <Label1>", we calculate the offset, and replace the line "GOTO <label1>" to "JUMP offset",
+    the program jumps its file line pointer according to the offset number.
+    Note that offset number can be zero! which means that infinity loop can appear if the script is not written correctly.
+
+    In the second round, we compile text script to program, or in other words, we run the program according to the processed script.
+    Also note that the first round of compilation can be done at back-end so that the script can be safely partitioned into pieces to avoid
+    latency in communication.
