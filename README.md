@@ -109,7 +109,11 @@
 * **Jiawen Yao**: Technical Advisor
 
     Rice University - MS CS
+  
+* **Qingchan Gao**: Art Director
 
+    North China University of Technology - BA Visual Communication Design
+  
 * **Xinyi (Sindy) Zheng**: Product Manager
 
    Purdue University - BS IT System Design & Digital Criminology
@@ -118,7 +122,7 @@
 
    Purdue University - MFA Interaction Design
 
-* **Yixin Hu**:
+* **Yixin Hu**: Music & Art Director
 
     McGill University - BS Computer Science and Biology
 
