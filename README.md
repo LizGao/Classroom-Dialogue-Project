@@ -106,6 +106,10 @@
 
     University of Cambridge - PhD (Probationary) in Education
   
+     - _Classroom Dialogue_ <br>
+     - _EdTech: Serious Game in Learning_ <br>
+     - _Science Education_ <br>
+  
 * **Jiawen Yao**: Technical Advisor
 
     Rice University - MS CS
