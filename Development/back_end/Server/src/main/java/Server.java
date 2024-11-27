@@ -15,15 +15,21 @@ import java.util.concurrent.TimeUnit;
 
 public class Server {
 
-    // Fields
+    // Server static info
     public static String name;
     public static int stage;
+    public static String ID;
     public static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
 
+    // Server dynamic footprint, refresh at every heaerbeat.
+    public static int numNewClients = 0;
+
+
     // Constructor
-    Server(String name) {
+    Server(String name, String ID) {
         this.name = name;
         this.stage = 1;
+        this.ID = ID;
     }
 
 
@@ -92,13 +98,12 @@ public class Server {
         User user = null;
 
         if (correct) {
+            // Create clientHandler instance
             clientHandler = new ClientHandler(user, clientSocket, in, out);
         }
 
         return clientHandler;
     }
-
-
 
     /**
      * Entry method of Server execution flow.
@@ -122,7 +127,8 @@ public class Server {
                 ClientHandler clientHandler = login(clientSocket, in, out);
                 //TODO handle null return value.
                 clients.add(clientHandler);
-                clientHandler.acceptClient();
+                numNewClients++;
+                clientHandler.acceptClient();       // Start clientHandler
 
             } catch (IOException e) {
                 serverSocket.close();           //! May cause server failure
@@ -131,12 +137,18 @@ public class Server {
         }
     }
 
+    public void resetNumNewClients() {
+        numNewClients = 0;
+    }
+
 
 // !!! MAIN()
 
-    public static void main (String[] args) {
+    public static void main (String[] args) throws Exception {
 
-        Server myServer = new Server("TestServer");
+        Server myServer = new Server("TestServer", "ID_randomeID");
+        Heart heart =  new Heart(myServer);
+        heart.startHeartBeat();
         try {
             myServer.startServer();
         } catch (Exception e) {

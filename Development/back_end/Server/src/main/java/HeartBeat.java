@@ -14,7 +14,6 @@ public class HeartBeat {
      * 3 = [Terminating] Terminating by error;
      */
 
-    // Server static info
     Server server;
     int stage;
     int numOfClients;
@@ -23,19 +22,16 @@ public class HeartBeat {
     String name;
     String ServerID;
 
-    // Server dynamic footprint, refresh at every heaerbeat.
 
 
-
-    public HeartBeat(Server server, int numOfClients,
-                     int numOfNewClients, String timeStamp, String ServerID) {
+    public HeartBeat(Server server, String timeStamp) {
         this.server = server;
         this.stage = this.server.stage;
-        this.numOfClients = numOfClients;
-        this.numOfNewClients = numOfNewClients;
+        this.numOfClients = server.clients.size();
+        this.numOfNewClients = this.server.numNewClients;
         this.timeStamp = timeStamp;
         this.name = this.server.name;
-        this.ServerID = ServerID;
+        this.ServerID = this.server.ID;
     }
 
     @Override
@@ -60,7 +56,7 @@ public class HeartBeat {
         }
 
         return String.format(
-                "HeartBeat { \n" +
+                "<HeartBeat> { \n" +
                         "  >>> @%s\n" +
                         "  >>> %s\n" +
                         "  >>> %s\n" +
@@ -87,8 +83,8 @@ public class HeartBeat {
     }
 
     public static void main(String[] args) {
-        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr"), 100, 20,
-                "2024/11/23-2:43:08", "a7c800f1");
+        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr", "ID_RandomeID"),
+                "2024/11/23-2:43:08");
         System.out.println(heartBeat.toString());
     }
 
