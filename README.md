@@ -106,10 +106,18 @@
 
     University of Cambridge - PhD (Probationary) in Education
   
+     - _Classroom Dialogue_ <br>
+     - _EdTech: Serious Game in Learning_ <br>
+     - _Science Education_ <br>
+  
 * **Jiawen Yao**: Technical Advisor
 
     Rice University - MS CS
+  
+* **Qingchan Gao**: Art Director
 
+    North China University of Technology - BA Visual Communication Design
+  
 * **Xinyi (Sindy) Zheng**: Product Manager
 
    Purdue University - BS IT System Design & Digital Criminology
@@ -118,7 +126,7 @@
 
    Purdue University - MFA Interaction Design
 
-* **Yixin Hu**:
+* **Yixin Hu**: Music & Art Director
 
     McGill University - BS Computer Science and Biology
 
