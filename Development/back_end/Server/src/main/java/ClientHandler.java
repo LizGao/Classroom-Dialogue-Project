@@ -45,7 +45,7 @@ class ClientHandler {
                         out.writeUTF("What do you want to say?\n" +
                                 "Type EXIT to terminate connection.");
 
-                        // receive the answer from client
+                        // Receive the answer from client
                         received = in.readUTF();
 
                         if (received.equals("EXIT")) {

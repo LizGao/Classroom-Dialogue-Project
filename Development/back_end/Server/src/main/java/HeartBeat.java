@@ -14,8 +14,8 @@ public class HeartBeat {
      * 3 = [Terminating] Terminating by error;
      */
 
+    // Server static info
     Server server;
-    int heartBeatSeq;           // heartbeat sequence number
     int stage;
     int numOfClients;
     int numOfNewClients;
@@ -23,10 +23,13 @@ public class HeartBeat {
     String name;
     String ServerID;
 
-    public HeartBeat(Server server, int heartBeatSeq, int numOfClients,
+    // Server dynamic footprint, refresh at every heaerbeat.
+
+
+
+    public HeartBeat(Server server, int numOfClients,
                      int numOfNewClients, String timeStamp, String ServerID) {
         this.server = server;
-        this.heartBeatSeq = heartBeatSeq;
         this.stage = this.server.stage;
         this.numOfClients = numOfClients;
         this.numOfNewClients = numOfNewClients;
@@ -58,14 +61,13 @@ public class HeartBeat {
 
         return String.format(
                 "HeartBeat { \n" +
-                        "  >>> %d @%s\n" +
+                        "  >>> @%s\n" +
                         "  >>> %s\n" +
                         "  >>> %s\n" +
                         "  >>> Stage %d (%s)\n" +
                         "  >>> Number of Clients: %d\n" +
                         "  >>> Number of New Clients: %d\n" +
                         "}",
-                heartBeatSeq,
                 timeStamp,
                 server != null ? server.toString() : "N/A",
                 this.server.name,
@@ -76,8 +78,16 @@ public class HeartBeat {
 
     }
 
+    /**
+     * Sends HeartBeat to System.out
+     */
+    public void sendHeartBest() {
+        System.out.println(this.toString());
+        return;
+    }
+
     public static void main(String[] args) {
-        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr"), 1, 100, 20,
+        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr"), 100, 20,
                 "2024/11/23-2:43:08", "a7c800f1");
         System.out.println(heartBeat.toString());
     }
