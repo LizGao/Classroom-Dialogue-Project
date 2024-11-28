@@ -26,6 +26,6 @@ class UserTest {
     void testChangePassword() {
         User user = new User();
         char result = user.changePassword("newPassword");
-        assertEquals('1', result);          // Return 1 = Success
+        assertEquals('1', result); // Return 1 = Success
     }
 }
