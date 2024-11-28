@@ -137,7 +137,7 @@ public class Server {
         }
     }
 
-    public void resetNumNewClients() {
+    public void resetStatus() {
         numNewClients = 0;
     }
 

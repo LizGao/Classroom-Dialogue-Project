@@ -25,7 +25,7 @@ public class Heart {
                         ZonedDateTime now = ZonedDateTime.now();
                         HeartBeat heartBeat = new HeartBeat(server, now.toString());
                         heartBeat.sendHeartBest();
-                        server.resetNumNewClients();
+                        server.resetStatus();
                         Thread.sleep(60000); // 每 60 秒打印一次
                     } catch (InterruptedException e) {
                         System.out.println("<HeartBeat> Heartbeat thread interrupted.");
