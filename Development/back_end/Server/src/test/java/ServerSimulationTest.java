@@ -87,9 +87,9 @@ class ServerSimulationTest {
             }
 
             // Assert the full response from the server
-            String fullResponse = responseBuilder.toString();
-            assertNotNull(fullResponse, "Server did not respond");
-            assertTrue(fullResponse.contains("Hi Server"), "Unexpected response: " + fullResponse);
+            String Response = responseBuilder.toString();
+            assertNotNull(Response, "Server did not respond");
+            assertTrue(Response.contains("Hi Server"), "Unexpected response: " + Response);
         }
     }
 }

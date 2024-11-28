@@ -26,7 +26,7 @@ class HeartTest {
         });
         heartBeatThread.start();
 
-        // One more beat
+        // One beat
         Thread.sleep(1500);
         assertTrue(outContent.toString().contains("<HeartBeat>"));
         heartBeatThread.interrupt();
