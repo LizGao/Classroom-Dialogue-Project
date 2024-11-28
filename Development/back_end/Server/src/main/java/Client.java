@@ -3,6 +3,7 @@ import java.net.*;
 import java.util.Scanner;
 
 /**
+ * A TOY client
  * This Client class is for testing use only. There are several methods that can be used to test the Server
  */
 
@@ -24,7 +25,6 @@ public class Client {
 
     }
 
-
     // Client process
     public static void startClient() throws IOException {
 
@@ -45,7 +45,9 @@ public class Client {
             // information between client and client handler
             while (true)
             {
-                System.out.println(in.readUTF());
+                try {
+                    System.out.println(in.readUTF());
+                } catch (EOFException e) {/* Do nothing */}
 
                 // INPUT: Enter testing input
 
@@ -56,6 +58,7 @@ public class Client {
 
 
                 out.writeUTF(tosend);
+                out.flush();
 
                 // If client sends exit,close this connection
                 // and then break from the while loop
@@ -80,9 +83,6 @@ public class Client {
             e.printStackTrace();
         }
     }
-
-
-
 
     public static void main(String[] args) throws IOException {
 

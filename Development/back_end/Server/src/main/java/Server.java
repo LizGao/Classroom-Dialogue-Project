@@ -32,7 +32,6 @@ public class Server {
         this.ID = ID;
     }
 
-
     /**
      * Receives HTTP requests and send back responds.
      * !! Use OUTSIDE of classroom
@@ -60,10 +59,6 @@ public class Server {
         }
     }
 
-
-// !!! Client methods:
-
-
     /**
      * Broadcasts received message to all connected clients.
      * @param message
@@ -78,10 +73,6 @@ public class Server {
 
         }
     }
-
-
-// !!! Server methods:
-
 
     /**
      * Gets login request from the client and checks its password
@@ -114,11 +105,11 @@ public class Server {
     public void startServer() throws Exception {
 
         ServerSocket serverSocket = new ServerSocket(8080);
-        System.out.println("Server started");       // Start Message
+        System.out.println("Server started"); // Start Message
         while (true) {
             try {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Client connected: " + clientSocket.toString());       // Client connected
+                System.out.println("Client connected: " + clientSocket.toString()); // Client connected
 
                 // Input organize
                 DataInputStream in = new DataInputStream(clientSocket.getInputStream());
@@ -128,10 +119,10 @@ public class Server {
                 //TODO handle null return value.
                 clients.add(clientHandler);
                 numNewClients++;
-                clientHandler.acceptClient();       // Start clientHandler
+                clientHandler.acceptClient(); // Start clientHandler
 
             } catch (IOException e) {
-                serverSocket.close();           //! May cause server failure
+                serverSocket.close(); //! May cause server failure
                 e.printStackTrace();
             }
         }
@@ -140,9 +131,6 @@ public class Server {
     public void resetStatus() {
         numNewClients = 0;
     }
-
-
-// !!! MAIN()
 
     public static void main (String[] args) throws Exception {
 

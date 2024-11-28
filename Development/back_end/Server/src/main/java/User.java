@@ -10,6 +10,7 @@ import java.util.Hashtable;
 public class User {
 
     enum Avatar {
+        EMPTY,
         SHARK,
         OCTOPUS,
         FOX,
@@ -30,14 +31,17 @@ public class User {
 
     // Constructor
     public User() {
-
+        this.name = "";
+        this.userID = "";
+        this.gameProgress = "";
+        this.avatar = Avatar.EMPTY;
     }
 
     public User(String name, String userID, Avatar avatar) {
-        this.name = this.name;
-        this.userID = this.userID;
+        this.name = name;
+        this.userID = userID;
         this.gameProgress = "";
-        this.avatar = this.avatar;
+        this.avatar = avatar;
     }
 
     // Setters

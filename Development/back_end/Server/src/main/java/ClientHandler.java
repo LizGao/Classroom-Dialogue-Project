@@ -1,5 +1,6 @@
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -30,23 +31,31 @@ class ClientHandler {
 
     public void sendMessage(String message) throws IOException {
         out.write(message.getBytes());
+        out.flush();
     }
 
     public void acceptClient() throws IOException {
         Runnable acceptClient = new Runnable() {
             @Override
             public void run() {
-                String received;
-                String toreturn;
+                String received = "";
+
+                // Send message to Client, asking what they want.
+                try {
+                    out.writeUTF("What do you want to say?\n" +
+                            "Type EXIT to terminate connection.");
+                    out.flush();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
                 while (true) {
                     try {
 
-                        // Send message to Client, asking what they want.
-                        out.writeUTF("What do you want to say?\n" +
-                                "Type EXIT to terminate connection.");
-
                         // Receive the answer from client
-                        received = in.readUTF();
+                        try {
+                            received = in.readUTF();
+                        } catch (EOFException e) {/* Do nothing */}
 
                         if (received.equals("EXIT")) {
                             System.out.println("Client " + ClientHandler.this.clientSocket + " sends exit...");
@@ -57,8 +66,9 @@ class ClientHandler {
                         }
 
                         // Respond
-                        out.writeUTF("You said: " + received);
-                        Date date = new Date();
+                        out.writeUTF("<Message>");
+                        out.writeUTF("You said: " + received + "\n</Message>");
+                        out.flush();
 
                     } catch (SocketException e) {
                         System.out.println("Unexpected disconnection from client: " + ClientHandler.this.clientSocket);
