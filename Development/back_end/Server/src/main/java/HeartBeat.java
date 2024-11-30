@@ -12,6 +12,7 @@ public class HeartBeat {
      * 1 = [Healthy] Normally Operating;
      * 2 = [Terminating] Terminating by kernel request;
      * 3 = [Terminating] Terminating by error;
+     * 4 = [Busy] Hosting high amount of clients;
      */
 
     Server server;
@@ -26,12 +27,12 @@ public class HeartBeat {
 
     public HeartBeat(Server server, String timeStamp) {
         this.server = server;
-        this.stage = this.server.stage;
+        this.stage = server.stage;
         this.numOfClients = server.clients.size();
-        this.numOfNewClients = this.server.numNewClients;
+        this.numOfNewClients = server.numNewClients;
         this.timeStamp = timeStamp;
-        this.name = this.server.name;
-        this.ServerID = this.server.ID;
+        this.name = server.name;
+        this.ServerID = server.ID;
     }
 
     @Override
@@ -50,6 +51,9 @@ public class HeartBeat {
                 break;
             case 3:
                 stageDescription = "[Terminating] By Error";
+                break;
+            case 4:
+                stageDescription = "[Busy] Hosting high amount of clients";
                 break;
             default:
                 stageDescription = "[Unknown]";

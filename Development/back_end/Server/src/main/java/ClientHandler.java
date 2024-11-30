@@ -36,6 +36,10 @@ class ClientHandler {
         out.flush();
     }
 
+    /**
+     * Handles a client connection session in a thread. Main body of ClientHandler
+     * @throws IOException
+     */
     public void acceptClient() throws IOException {
         Runnable acceptClient = new Runnable() {
             @Override

@@ -83,10 +83,10 @@ public class Server {
 
     /**
      * Gets login request from the client and checks its password
-     * @param clientSocket
-     * @param in
-     * @param out
-     * @return clientHandler
+     * @param clientSocket: Client socket
+     * @param in: DataInputStream of the socket
+     * @param out: DataOutputStream of the socket
+     * @return clientHandler: a new ClientHandler thread ready to be launched
      */
     public ClientHandler acceptlogin(Socket clientSocket, DataInputStream in, DataOutputStream out) {
 
@@ -111,8 +111,11 @@ public class Server {
      */
     public void startServer() throws Exception {
 
+        // Setup heartbeat
         Heart heart =  new Heart(this);
         heart.startHeartBeat();
+
+        // Accepting connection
         serverSocket = new ServerSocket(portNumber);
         System.out.println("Server started"); // Start Message
         while (running) {
@@ -133,12 +136,16 @@ public class Server {
             } catch (SocketException e) {
                 /* Do nothing */
             } catch (IOException e) {
-                // serverSocket.close(); //! May cause server failure
+                serverSocket.close(); //! Causes main thread failure
                 e.printStackTrace();
             }
         }
     }
 
+    /**
+     * Stops accepting new clients, closes the server socket.
+     * @throws IOException
+     */
     public void stopServer() throws IOException {
         this.running = false;
         if (serverSocket != null && !serverSocket.isClosed()) {
@@ -147,6 +154,9 @@ public class Server {
         }
     }
 
+    /**
+     * Resets the server status for the next heartbeat
+     */
     public void resetStatus() {
         numNewClients = 0;
     }
