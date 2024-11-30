@@ -17,12 +17,14 @@ import java.util.Date;
 class ClientHandler {
 
     private User user;
+    private Server server;
     private Socket clientSocket;
     private DataInputStream in;
     private DataOutputStream out;
 
     // Constructor
-    public ClientHandler(User user, Socket clientSocket, DataInputStream in, DataOutputStream out) {
+    public ClientHandler(Server server, User user, Socket clientSocket, DataInputStream in, DataOutputStream out) {
+        this.server = server;
         this.user = user;
         this.in = in;
         this.out = out;
@@ -58,10 +60,11 @@ class ClientHandler {
                         } catch (EOFException e) {/* Do nothing */}
 
                         if (received.equals("EXIT")) {
-                            System.out.println("Client " + ClientHandler.this.clientSocket + " sends exit...");
-                            System.out.println("Closing this connection.");
+                            server.clients.remove(ClientHandler.this);
+//                            System.out.println("Client " + ClientHandler.this.clientSocket + " sends exit...");
+//                            System.out.println("Closing this connection.");
                             ClientHandler.this.clientSocket.close();
-                            System.out.println("Connection closed");
+//                            System.out.println("Connection closed");
                             break;
                         }
 
@@ -72,7 +75,7 @@ class ClientHandler {
 
                     } catch (SocketException e) {
                         System.out.println("Unexpected disconnection from client: " + ClientHandler.this.clientSocket);
-                        Server.clients.remove(this);
+                        server.clients.remove(ClientHandler.this);
                         break;
                     } catch (IOException e) {
                         e.printStackTrace();

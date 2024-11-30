@@ -5,11 +5,11 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HeartBeatTest {
+class TestHeartBeat {
 
     @Test
     void testToString() {
-        Server server = new Server("TestServer", "TestID");
+        Server server = new Server("TestServer", "TestID", 8080);
         HeartBeat heartBeat = new HeartBeat(server, "2024-11-23T12:00:00Z");
 
         String result = heartBeat.toString();
@@ -22,7 +22,7 @@ class HeartBeatTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        Server server = new Server("TestServer", "TestID");
+        Server server = new Server("TestServer", "TestID", 8080);
         HeartBeat heartBeat = new HeartBeat(server, "2024-11-23T12:00:00Z");
 
         heartBeat.sendHeartBest();

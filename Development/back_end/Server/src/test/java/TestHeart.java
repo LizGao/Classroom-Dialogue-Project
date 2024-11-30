@@ -5,7 +5,7 @@ import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class HeartTest {
+class TestHeart {
 
     @Test
     void testStartHeartBeat() throws InterruptedException {
@@ -13,7 +13,7 @@ class HeartTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        Server server = new Server("TestServer", "ID_Test");
+        Server server = new Server("TestServer", "ID_Test", 8080);
         Heart heart = new Heart(server);
 
         // Start Heartbeat

@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.*;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,63 +12,35 @@ import static org.junit.jupiter.api.Assertions.*;
  * Simulate a real Server-Client communication to test Server's respond to messages, requests, etc.
  */
 
-class ServerSimulationTest {
+class TestSendMessageToServer {
 
+    private ByteArrayOutputStream outContent;
     private Server testServer;
-    private ExecutorService executorService;
-
-    @BeforeEach
-    void setUp() {
-        testServer = new Server("TestServer", "TestID");
-        executorService = Executors.newSingleThreadExecutor();
-    }
-
-    @AfterEach
-    void tearDown() {
-        executorService.shutdownNow(); // Stop the server thread after tests
-    }
-
-    @Test
-    void testConnectToServer() throws Exception {
-        // Run the server in a separate thread
-        executorService.submit(() -> {
-            try {
-                testServer.startServer();
-            } catch (Exception e) {
-                fail("Server encountered an exception: " + e.getMessage());
-            }
-        });
-
-        // Allow the server to start
-        Thread.sleep(1000);
-
-        // Simulate a client connecting to the server
-        Socket s = new Socket("localhost", 8080);
-
-        // Assert the response from the server
-        BufferedReader reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-        String responseLine = reader.readLine();
-        assertNotNull(responseLine, "Server did not respond");
-        assertTrue(responseLine.contains("What do you want to say?"), "Unexpected response: " + responseLine);
-
-    }
 
     @Test
     void testSendMessageToServer() throws Exception {
+
+        testServer = new Server("TestServer", "DisconenctionTestServer", 8081);
+
+        // Redirect System.out to capture server output
+        outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+
         // Run the server in a separate thread
-        executorService.submit(() -> {
+        Thread serverThread = new Thread(() -> {
             try {
                 testServer.startServer();
             } catch (Exception e) {
                 fail("Server encountered an exception: " + e.getMessage());
             }
         });
+        serverThread.start();
 
         // Allow the server to start
         Thread.sleep(1000);
 
         // Simulate a client connecting to the server
-        try (Socket clientSocket = new Socket("localhost", 8080);
+        try (Socket clientSocket = new Socket("localhost", 8081);
              DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
              DataInputStream in = new DataInputStream(clientSocket.getInputStream())) {
 
@@ -89,6 +62,8 @@ class ServerSimulationTest {
             }
 
             // Assert the full response from the server
+            testServer.stopServer();
+            serverThread.interrupt();
             String Response = responseBuilder.toString();
             assertNotNull(Response, "Server did not respond");
             assertTrue(Response.contains("Hi Server"), "Unexpected response: " + Response);

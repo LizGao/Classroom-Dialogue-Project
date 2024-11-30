@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: HeartBeatTest
+Test set: TestHeart
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 s -- in HeartBeatTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.51 s - in TestHeart

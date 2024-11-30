@@ -1,6 +1,8 @@
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/ClientHandlerTest.java
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/HeartBeatTest.java
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/HeartTest.java
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/ServerSimulationTest.java
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/ServerTest.java
-/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/UserTest.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestClientHandler.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestConnectToServer.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestDisconnect.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestHeart.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestHeartBeat.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestSendMessageToServer.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestServerClass.java
+/Users/liz/Documents/GitHub/Classroom-Dialog-Project/Development/back_end/Server/src/test/java/TestUserClass.java

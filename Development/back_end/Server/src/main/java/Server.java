@@ -1,9 +1,8 @@
 import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
-import java.util.Date;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.net.SocketException;
 
 
 /**
@@ -16,20 +15,28 @@ import java.util.concurrent.TimeUnit;
 public class Server {
 
     // Server static info
-    public static String name;
-    public static int stage;
-    public static String ID;
-    public static CopyOnWriteArrayList<ClientHandler> clients = new CopyOnWriteArrayList<>();
+    private boolean running = true;
+    private ServerSocket serverSocket;
+    private int portNumber;
+    public String name;
+    public int stage;
+    public String ID;
+    public ArrayList<ClientHandler> clients = new ArrayList<>();
 
     // Server dynamic footprint, refresh at every heaerbeat.
     public static int numNewClients = 0;
 
 
     // Constructor
-    Server(String name, String ID) {
+    Server(String name, String ID, int portNumber) {
+        this.portNumber = portNumber;
         this.name = name;
         this.stage = 1;
         this.ID = ID;
+    }
+
+    public int getPortNumber() {
+        return portNumber;
     }
 
     /**
@@ -42,8 +49,8 @@ public class Server {
      */
     public static void handleHTTPRequest(Socket client, StringBuilder request) throws IOException {
         // Print request
-        System.out.println("--REQUEST--");
-        System.out.println(request);
+//        System.out.println("--REQUEST--");
+//        System.out.println(request);
 
         // Start a classroom
         String[] requestText = request.toString().split(" ");
@@ -63,7 +70,7 @@ public class Server {
      * Broadcasts received message to all connected clients.
      * @param message
      */
-    public static void broadcast(String message) {
+    public void broadcast(String message) {
         for (ClientHandler client : clients) {
             try {
                 client.sendMessage(message);
@@ -81,7 +88,7 @@ public class Server {
      * @param out
      * @return clientHandler
      */
-    public static ClientHandler login(Socket clientSocket, DataInputStream in, DataOutputStream out) {
+    public ClientHandler acceptlogin(Socket clientSocket, DataInputStream in, DataOutputStream out) {
 
         boolean correct = true;
         // TODO Implement this method
@@ -90,7 +97,7 @@ public class Server {
 
         if (correct) {
             // Create clientHandler instance
-            clientHandler = new ClientHandler(user, clientSocket, in, out);
+            clientHandler = new ClientHandler(Server.this, user, clientSocket, in, out);
         }
 
         return clientHandler;
@@ -104,9 +111,11 @@ public class Server {
      */
     public void startServer() throws Exception {
 
-        ServerSocket serverSocket = new ServerSocket(8080);
+        Heart heart =  new Heart(this);
+        heart.startHeartBeat();
+        serverSocket = new ServerSocket(portNumber);
         System.out.println("Server started"); // Start Message
-        while (true) {
+        while (running) {
             try {
                 Socket clientSocket = serverSocket.accept();
                 System.out.println("Client connected: " + clientSocket.toString()); // Client connected
@@ -115,16 +124,26 @@ public class Server {
                 DataInputStream in = new DataInputStream(clientSocket.getInputStream());
                 DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
 
-                ClientHandler clientHandler = login(clientSocket, in, out);
+                ClientHandler clientHandler = acceptlogin(clientSocket, in, out);
                 //TODO handle null return value.
                 clients.add(clientHandler);
                 numNewClients++;
                 clientHandler.acceptClient(); // Start clientHandler
 
+            } catch (SocketException e) {
+                /* Do nothing */
             } catch (IOException e) {
-                serverSocket.close(); //! May cause server failure
+                // serverSocket.close(); //! May cause server failure
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void stopServer() throws IOException {
+        this.running = false;
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            System.out.println("Closing server socket...");
+            serverSocket.close();
         }
     }
 
@@ -134,9 +153,7 @@ public class Server {
 
     public static void main (String[] args) throws Exception {
 
-        Server myServer = new Server("TestServer", "ID_randomeID");
-        Heart heart =  new Heart(myServer);
-        heart.startHeartBeat();
+        Server myServer = new Server("TestServer", "ID_randomeID", Integer.parseInt(args[0]));
         try {
             myServer.startServer();
         } catch (Exception e) {

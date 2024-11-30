@@ -1,7 +1,9 @@
-UserTest.class
-HeartTest.class
-ClientHandlerTest.class
-ServerTest.class
-HeartBeatTest.class
-ServerTest$1.class
-ServerSimulationTest.class
+TestClientHandler.class
+TestConnectToServer.class
+TestServerClass.class
+TestUserClass.class
+TestSendMessageToServer.class
+TestHeartBeat.class
+TestServerClass$1.class
+TestDisconnect.class
+TestHeart.class

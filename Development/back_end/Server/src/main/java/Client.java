@@ -71,7 +71,10 @@ public class Client {
                 }
 
                 // printing date or time as requested by client
-                String received = in.readUTF();
+                String received = "";
+                try {
+                    received = in.readUTF();
+                } catch (IOException e) {/* Do nothing*/}
                 System.out.println(received);
             }
 
@@ -79,6 +82,7 @@ public class Client {
             scn.close();
             in.close();
             out.close();
+            System.exit(0);
         }catch(Exception e){
             e.printStackTrace();
         }

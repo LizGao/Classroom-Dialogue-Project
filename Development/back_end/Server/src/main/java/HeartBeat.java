@@ -58,15 +58,14 @@ public class HeartBeat {
         return String.format(
                 "<HeartBeat> { \n" +
                         "  >>> @%s\n" +
-                        "  >>> %s\n" +
-                        "  >>> %s\n" +
+                        "  >>> %s@%d\n" +
                         "  >>> Stage %d (%s)\n" +
                         "  >>> Number of Clients: %d\n" +
                         "  >>> Number of New Clients: %d\n" +
                         "}",
                 timeStamp,
-                server != null ? server.toString() : "N/A",
                 this.server.name,
+                this.server.getPortNumber(),
                 stage, stageDescription,
                 numOfClients,
                 numOfNewClients
@@ -83,7 +82,7 @@ public class HeartBeat {
     }
 
     public static void main(String[] args) {
-        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr", "ID_RandomeID"),
+        HeartBeat heartBeat = new HeartBeat(new Server("Test_Servr", "ID_RandomeID", 8080),
                 "2024/11/23-2:43:08");
         System.out.println(heartBeat.toString());
     }

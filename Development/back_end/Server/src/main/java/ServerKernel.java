@@ -108,7 +108,7 @@ public class ServerKernel {
      * @param serverName
      */
     public static void createServer(String serverName) {
-        Server target = new Server(serverName, "ID_RandomID");
+        Server target = new Server(serverName, "ID_RandomID", 8080);
         servers.add(target);
         try {
             target.startServer();
