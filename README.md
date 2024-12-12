@@ -30,21 +30,21 @@
 
 
 ## Scale:
-   产品用户：高一/高二，中国物化生心课程，教师+学生
+   Product User: students & their teachers, high school Freshman/ Sophomore, taking at least 1 science class (physics/ chemistry/ biology/ psychology)
 	
-   产品模式：手机应用【教师端+学生端+admin端】
+   Product Type: software application, available on phones and computers
 	
-   项目时长：24.9~25.9 基于采访设计软件框架 25.9后给予反馈迭代两次
+   Product Development Timeline: 09/2024 ~ 09/2025, design app based on user interview and research purposes; provide 2 update versions after 09/2025 based on feedback.
 	
-   使用场景：
+   Product Scenario: 
 	
-      课前（教师备课/学生预习）
+      Before Class: teachers prepare for in-class discussions/ students preview lecture materials. 
 		
-      课中（教师发牌+task/学生看牌+task）
+      In Class: teachers present or control in-class discussions/students complete tasks
 		
-      课后（教师上传录音/学生复习）
+      After Class: teachers reflect on class discussions & student comments/ students complete take-home tasks. 
 		
-   产品目的：促进学生dialogu engagement + motivation
+   Product Goal: promote classroom dialogues, and improve students' intrinsic motivation in learning
 
 
 
@@ -120,7 +120,7 @@
   
 * **Xinyi (Sindy) Zheng**: Product Manager
 
-   Purdue University - BS IT System Design & Digital Criminology
+   Purdue University - BS IT System Design & BA Digital Criminology
  
 * **Yihan Huang**: User Experience Designer
 
